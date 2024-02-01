@@ -1,4 +1,6 @@
-﻿//namespace SunamoCollectionWithoutDuplicates;
+namespace SunamoCollectionWithoutDuplicates;
+
+//namespace SunamoCollectionWithoutDuplicates;
 
 //public class DumpAsStringHeaderArgs
 //{

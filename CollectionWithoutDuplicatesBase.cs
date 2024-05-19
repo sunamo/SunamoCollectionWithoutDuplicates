@@ -1,4 +1,10 @@
-namespace SunamoCollectionWithoutDuplicates;
+namespace
+#if SunamoDevCode
+SunamoDevCode
+#else
+SunamoCollectionWithoutDuplicates
+#endif
+;
 
 public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
 {

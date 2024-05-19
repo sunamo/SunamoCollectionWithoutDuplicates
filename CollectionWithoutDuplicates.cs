@@ -1,4 +1,12 @@
-namespace SunamoCollectionWithoutDuplicates;
+namespace
+#if SunamoDevCode
+SunamoDevCode
+#elif SunamoDevCode
+SunamoDevCode
+#else
+SunamoCollectionWithoutDuplicates
+#endif
+;
 
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {

@@ -5,7 +5,6 @@ SunamoDevCode
 SunamoCollectionWithoutDuplicates
 #endif
 ;
-
 public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
 {
     public List<T> c = null;
@@ -28,10 +27,8 @@ public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
             }
         }
     }
-
     public static bool br = false;
     int count = 10000;
-
     public CollectionWithoutDuplicatesBase()
     {
         if (br)
@@ -40,22 +37,18 @@ public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
         }
         c = new List<T>();
     }
-
     public CollectionWithoutDuplicatesBase(int count)
     {
         this.count = count;
         c = new List<T>(count);
     }
-
     public CollectionWithoutDuplicatesBase(IList<T> l)
     {
         c = new List<T>(l.ToList());
     }
-
     public bool Add(T t2)
     {
         bool result = false;
-
         var con = Contains(t2);
         if (con.HasValue)
         {
@@ -73,7 +66,6 @@ public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
                 result = true;
             }
         }
-
         if (result)
         {
             if (IsComparingByString())
@@ -81,22 +73,14 @@ public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
                 sr.Add(ts);
             }
         }
-
         return result;
     }
-
     protected abstract bool IsComparingByString();
-
     protected string ts = null;
-
     public abstract bool? Contains(T t2);
-
     public abstract int AddWithIndex(T t2);
-
     public abstract int IndexOf(T path);
-
     List<T> wasNotAdded = new List<T>();
-
     /// <summary>
     /// If I want without checkink, use c.AddRange
     /// </summary>
@@ -114,7 +98,6 @@ public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
         }
         return wasNotAdded;
     }
-
     public string DumpAsString(string operation, /*DumpAsStringHeaderArgs*/ object dumpAsStringHeaderArgs)
     {
         throw new Exception("Nemůže tu být protože DumpListAsStringOneLine jsem přesouval do sunamo a tam už zůstane");

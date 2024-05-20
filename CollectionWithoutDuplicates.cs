@@ -7,23 +7,17 @@ SunamoDevCode
 SunamoCollectionWithoutDuplicates
 #endif
 ;
-
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {
     public CollectionWithoutDuplicates() : base()
     {
-
     }
-
     public CollectionWithoutDuplicates(int count) : base(count)
     {
     }
-
     public CollectionWithoutDuplicates(IList<T> l) : base(l)
     {
-
     }
-
     public override int AddWithIndex(T t2)
     {
         if (IsComparingByString())
@@ -46,7 +40,6 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
         }
         return vr;
     }
-
     public override bool? Contains(T t2)
     {
         if (IsComparingByString())
@@ -62,20 +55,17 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
                 {
                     return null;
                 }
-
                 return false;
             }
         }
         return true;
     }
-
     public override int IndexOf(T path)
     {
         if (IsComparingByString())
         {
             return sr.IndexOf(path.ToString());
         }
-
         int vr = c.IndexOf(path);
         if (vr == -1)
         {
@@ -84,7 +74,6 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
         }
         return vr;
     }
-
     protected override bool IsComparingByString()
     {
         return allowNull.HasValue && allowNull.Value;

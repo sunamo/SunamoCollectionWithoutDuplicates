@@ -1,11 +1,13 @@
 namespace
 #if SunamoDevCode
 SunamoDevCode
+#elif SunamoFileSystem
+SunamoFileSystem
 #else
 SunamoCollectionWithoutDuplicates
 #endif
 ;
-public abstract class CollectionWithoutDuplicatesBase<T> : IDumpAsString
+public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
 {
     public List<T> c = null;
     public List<string> sr = null;

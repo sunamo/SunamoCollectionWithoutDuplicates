@@ -3,6 +3,8 @@ namespace
 SunamoDevCode
 #elif SunamoDevCode
 SunamoDevCode
+#elif SunamoFileSystem
+SunamoFileSystem
 #else
 SunamoCollectionWithoutDuplicates
 #endif

@@ -1,7 +1,7 @@
 namespace SunamoCollectionWithoutDuplicates;
 
 
-public interface IDumpAsString
+internal interface IDumpAsString
 {
     string DumpAsString(string operation, /*DumpAsStringHeaderArgs*/ Object dumpAsStringHeaderArgs);
 }

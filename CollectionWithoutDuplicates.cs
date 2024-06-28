@@ -1,14 +1,3 @@
-namespace
-#if SunamoDevCode
-SunamoDevCode
-#elif SunamoDevCode
-SunamoDevCode
-#elif SunamoFileSystem
-SunamoFileSystem
-#else
-SunamoCollectionWithoutDuplicates
-#endif
-;
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {
     public CollectionWithoutDuplicates() : base()

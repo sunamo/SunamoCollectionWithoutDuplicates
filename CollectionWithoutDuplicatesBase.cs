@@ -1,3 +1,5 @@
+
+namespace SunamoCollectionWithoutDuplicates;
 public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
 {
     public List<T> c = null;

@@ -1,3 +1,5 @@
+
+namespace SunamoCollectionWithoutDuplicates;
 public class AllStrings
 {
     public const string dot = ".";

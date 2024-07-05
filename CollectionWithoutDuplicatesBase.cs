@@ -1,4 +1,3 @@
-
 namespace SunamoCollectionWithoutDuplicates;
 public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
 {

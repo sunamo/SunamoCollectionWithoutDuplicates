@@ -2,11 +2,17 @@ global using System.Collections.Generic;
 global using System;
 global using System.Linq;
 global using System.Collections;
-
 global using System.Text;
 global using System.Collections.Generic;
 global using System.Collections;
 global using System.IO;
-
 global using System.Diagnostics.CodeAnalysis;
 global using System.Reflection;
+global using SunamoCollectionWithoutDuplicates;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoArgs;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoStringGetLines;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoValues;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoXlfKeys;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoExceptions.OnlyInSE;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoExceptions._AddedToAllCsproj;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoInterfaces.Interfaces;

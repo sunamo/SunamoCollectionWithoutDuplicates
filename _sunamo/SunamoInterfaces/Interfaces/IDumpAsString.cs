@@ -1,4 +1,4 @@
-namespace SunamoCollectionWithoutDuplicates;
+namespace SunamoCollectionWithoutDuplicates._sunamo.SunamoInterfaces.Interfaces;
 
 
 internal interface IDumpAsString

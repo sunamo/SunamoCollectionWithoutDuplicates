@@ -1,5 +1,5 @@
 
-namespace SunamoCollectionWithoutDuplicates;
+namespace SunamoCollectionWithoutDuplicates._sunamo.SunamoExceptions.OnlyInSE;
 using System.Diagnostics;
 using System.Text;
 

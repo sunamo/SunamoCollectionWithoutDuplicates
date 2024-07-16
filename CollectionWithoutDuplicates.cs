@@ -1,4 +1,5 @@
 namespace SunamoCollectionWithoutDuplicates;
+
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {
     public CollectionWithoutDuplicates() : base()

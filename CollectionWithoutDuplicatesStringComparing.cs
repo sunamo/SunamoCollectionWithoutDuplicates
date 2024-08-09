@@ -2,9 +2,8 @@ namespace SunamoCollectionWithoutDuplicates;
 
 public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDuplicatesBase<T>
 {
-    public CollectionWithoutDuplicatesStringComparing() : base()
+    public CollectionWithoutDuplicatesStringComparing()
     {
-
     }
 
     public CollectionWithoutDuplicatesStringComparing(int count) : base(count)
@@ -13,7 +12,6 @@ public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDu
 
     public CollectionWithoutDuplicatesStringComparing(IList<T> l) : base(l)
     {
-
     }
 
     public override int AddWithIndex(T t2)
@@ -22,18 +20,15 @@ public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDu
         {
             return sr.IndexOf(t2.ToString());
         }
-        else
-        {
-            Add(t2);
-            return c.Count - 1;
-        }
+
+        Add(t2);
+        return c.Count - 1;
     }
 
     public override bool? Contains(T t2)
     {
         ts = t2.ToString();
         return sr.Contains(ts);
-
     }
 
     public override int IndexOf(T path)

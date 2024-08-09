@@ -2,42 +2,27 @@ namespace SunamoCollectionWithoutDuplicates;
 
 public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, IList<T>
 {
-    public List<T> c = null;
-    public List<string> sr = null;
-    bool? _allowNull = false;
-    /// <summary>
-    /// true = compareWithString
-    /// false = !compareWithString
-    /// null = allow null (can't compareWithString)
-    /// </summary>
-    public bool? allowNull
-    {
-        get => _allowNull;
-        set
-        {
-            _allowNull = value;
-            if (value.HasValue && value.Value)
-            {
-                sr = new List<string>(count);
-            }
-        }
-    }
-
-    public int Count => c.Count;
-
-    public bool IsReadOnly => false;
-
-    public T this[int index] { get => c[index]; set => c[index] = value; }
-
     public static bool br = false;
-    int count = 10000;
+    private bool? _allowNull = false;
+    public List<T> c;
+    private readonly int count = 10000;
+
+    private bool resultOfAdd;
+
+    /// <summary>
+    ///     Dříve vracela Contains() bool? ale musí splňoval IList
+    /// </summary>
+    public bool? resultOfBoolN = null;
+
+    public List<string> sr;
+
+    protected string ts = null;
+
+    private readonly List<T> wasNotAdded = new();
 
     public CollectionWithoutDuplicatesBaseIList()
     {
-        if (br)
-        {
-            System.Diagnostics.Debugger.Break();
-        }
+        if (br) Debugger.Break();
         c = new List<T>();
     }
 
@@ -52,7 +37,36 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
         c = new List<T>(l.ToList());
     }
 
-    bool resultOfAdd = false;
+    /// <summary>
+    ///     true = compareWithString
+    ///     false = !compareWithString
+    ///     null = allow null (can't compareWithString)
+    /// </summary>
+    public bool? allowNull
+    {
+        get => _allowNull;
+        set
+        {
+            _allowNull = value;
+            if (value.HasValue && value.Value) sr = new List<string>(count);
+        }
+    }
+
+    public string DumpAsString(string operation, object dumpAsStringHeaderArgs)
+    {
+        throw new Exception("Nemůže tu být protože DumpListAsStringOneLine jsem přesouval do sunamo a tam už zůstane");
+        //return c.DumpAsString(operation, a);
+    }
+
+    public int Count => c.Count;
+
+    public bool IsReadOnly => false;
+
+    public T this[int index]
+    {
+        get => c[index];
+        set => c[index] = value;
+    }
 
     public void Add(T t2)
     {
@@ -77,62 +91,16 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
         }
 
         if (resultOfAdd)
-        {
             if (IsComparingByString())
-            {
                 sr.Add(ts);
-            }
-        }
-
-
     }
-
-    protected abstract bool IsComparingByString();
-
-    protected string ts = null;
-
-    /// <summary>
-    /// Dříve vracela Contains() bool? ale musí splňoval IList
-    /// </summary>
-    public bool? resultOfBoolN = null;
-
-    public abstract bool? ContainsN(T t2);
 
     public bool Contains(T item)
     {
         return ContainsN(item).GetValueOrDefault();
     }
 
-    public abstract int AddWithIndex(T t2);
-
     public abstract int IndexOf(T path);
-
-    List<T> wasNotAdded = new List<T>();
-
-    /// <summary>
-    /// If I want without checkink, use c.AddRange
-    /// </summary>
-    /// <param name="enumerable"></param>
-    /// <param name="withoutChecking"></param>
-    public List<T> AddRange(IList<T> list)
-    {
-        wasNotAdded.Clear();
-        foreach (var item in list)
-        {
-            Add(item);
-            if (!resultOfAdd)
-            {
-                wasNotAdded.Add(item);
-            }
-        }
-        return wasNotAdded;
-    }
-
-    public string DumpAsString(string operation, object dumpAsStringHeaderArgs)
-    {
-        throw new Exception("Nemůže tu být protože DumpListAsStringOneLine jsem přesouval do sunamo a tam už zůstane");
-        //return c.DumpAsString(operation, a);
-    }
 
     public void Insert(int index, T item)
     {
@@ -148,6 +116,7 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     {
         c.Clear();
     }
+
     public void CopyTo(T[] array, int arrayIndex)
     {
         c.CopyTo(array, arrayIndex);
@@ -166,5 +135,28 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     IEnumerator IEnumerable.GetEnumerator()
     {
         return c.GetEnumerator();
+    }
+
+    protected abstract bool IsComparingByString();
+
+    public abstract bool? ContainsN(T t2);
+
+    public abstract int AddWithIndex(T t2);
+
+    /// <summary>
+    ///     If I want without checkink, use c.AddRange
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <param name="withoutChecking"></param>
+    public List<T> AddRange(IList<T> list)
+    {
+        wasNotAdded.Clear();
+        foreach (var item in list)
+        {
+            Add(item);
+            if (!resultOfAdd) wasNotAdded.Add(item);
+        }
+
+        return wasNotAdded;
     }
 }

@@ -4,7 +4,7 @@ global using System.Linq;
 global using System.Collections;
 global using System.Text;
 global using System.IO;
-global using SunamoCollectionWithoutDuplicates._sunamo.SunamoValues;
+global using SunamoCollectionWithoutDuplicates;
 global using SunamoCollectionWithoutDuplicates._sunamo.SunamoExceptions;
 global using SunamoCollectionWithoutDuplicates._sunamo.SunamoInterfaces.Interfaces;
 global using System.Diagnostics;

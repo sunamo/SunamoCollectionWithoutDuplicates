@@ -10,3 +10,6 @@ global using System.Diagnostics;
 global using System.Reflection;
 global using System.Net;
 global using System.Diagnostics.CodeAnalysis;
+global using SunamoCollectionWithoutDuplicates;
+global using SunamoCollectionWithoutDuplicates._sunamo;
+global using SunamoCollectionWithoutDuplicates._sunamo.SunamoArgs;

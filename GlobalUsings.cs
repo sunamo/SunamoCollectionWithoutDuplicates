@@ -13,3 +13,7 @@ global using System.Diagnostics.CodeAnalysis;
 global using SunamoCollectionWithoutDuplicates;
 global using SunamoCollectionWithoutDuplicates._sunamo;
 global using SunamoCollectionWithoutDuplicates._sunamo.SunamoArgs;
+
+global using ILogger = Microsoft.Extensions.Logging.ILogger;
+global using Microsoft.Extensions.Logging;
+global using NullLogger = Microsoft.Extensions.Logging.Abstractions.NullLogger;

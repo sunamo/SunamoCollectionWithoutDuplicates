@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollectionWithoutDuplicates;
 
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
@@ -10,67 +13,67 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
     {
     }
 
-    public CollectionWithoutDuplicates(IList<T> l) : base(l)
+    public CollectionWithoutDuplicates(IList<T> list) : base(list)
     {
     }
 
-    public override int AddWithIndex(T t2)
+    public override int AddWithIndex(T value)
     {
         if (IsComparingByString())
         {
-            if (Contains(t2).GetValueOrDefault())
+            if (Contains(value).GetValueOrDefault())
             {
                 // Will checkout below
             }
             else
             {
-                Add(t2);
-                return c.Count - 1;
+                Add(value);
+                return Collection.Count - 1;
             }
         }
 
-        var vr = c.IndexOf(t2);
-        if (vr == -1)
+        var index = Collection.IndexOf(value);
+        if (index == -1)
         {
-            Add(t2);
-            return c.Count - 1;
+            Add(value);
+            return Collection.Count - 1;
         }
 
-        return vr;
+        return index;
     }
 
-    public override bool? Contains(T t2)
+    public override bool? Contains(T value)
     {
         if (IsComparingByString())
         {
-            ts = t2.ToString();
-            return sr.Contains(ts);
+            StringValue = value.ToString();
+            return StringRepresentations.Contains(StringValue);
         }
 
-        if (!c.Contains(t2))
+        if (!Collection.Contains(value))
         {
-            if (EqualityComparer<T>.Default.Equals(t2, default)) return null;
+            if (EqualityComparer<T>.Default.Equals(value, default)) return null;
             return false;
         }
 
         return true;
     }
 
-    public override int IndexOf(T path)
+    public override int IndexOf(T value)
     {
-        if (IsComparingByString()) return sr.IndexOf(path.ToString());
-        var vr = c.IndexOf(path);
-        if (vr == -1)
+        if (IsComparingByString()) return StringRepresentations.IndexOf(value.ToString());
+        var index = Collection.IndexOf(value);
+        if (index == -1)
         {
-            c.Add(path);
-            return c.Count - 1;
+            Collection.Add(value);
+            return Collection.Count - 1;
         }
 
-        return vr;
+        return index;
     }
 
     protected override bool IsComparingByString()
     {
-        return allowNull.HasValue && allowNull.Value;
+        return AllowNull.HasValue && AllowNull.Value;
     }
 }

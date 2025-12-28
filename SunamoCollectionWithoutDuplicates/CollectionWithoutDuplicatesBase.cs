@@ -1,30 +1,33 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollectionWithoutDuplicates;
 
 public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
 {
-    public static bool br = false;
+    public static bool BreakOnConstruction = false;
     private bool? _allowNull = false;
-    public List<T> c;
+    public List<T> Collection { get; set; }
     private readonly int count = 10000;
-    public List<string> sr;
-    protected string ts = null;
+    public List<string> StringRepresentations { get; set; }
+    protected string StringValue = null;
     private readonly List<T> wasNotAdded = new();
 
     public CollectionWithoutDuplicatesBase()
     {
-        if (br) Debugger.Break();
-        c = new List<T>();
+        if (BreakOnConstruction) Debugger.Break();
+        Collection = new List<T>();
     }
 
     public CollectionWithoutDuplicatesBase(int count)
     {
         this.count = count;
-        c = new List<T>(count);
+        Collection = new List<T>(count);
     }
 
-    public CollectionWithoutDuplicatesBase(IList<T> l)
+    public CollectionWithoutDuplicatesBase(IList<T> list)
     {
-        c = new List<T>(l.ToList());
+        Collection = new List<T>(list.ToList());
     }
 
     /// <summary>
@@ -32,47 +35,47 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     ///     false = !compareWithString
     ///     null = allow null (can't compareWithString)
     /// </summary>
-    public bool? allowNull
+    public bool? AllowNull
     {
         get => _allowNull;
         set
         {
             _allowNull = value;
-            if (value.HasValue && value.Value) sr = new List<string>(count);
+            if (value.HasValue && value.Value) StringRepresentations = new List<string>(count);
         }
     }
 
-    public bool Add(T t2)
+    public bool Add(T value)
     {
         var result = false;
-        var con = Contains(t2);
-        if (con.HasValue)
+        var containsResult = Contains(value);
+        if (containsResult.HasValue)
         {
-            if (!con.Value)
+            if (!containsResult.Value)
             {
-                c.Add(t2);
+                Collection.Add(value);
                 result = true;
             }
         }
         else
         {
-            if (!allowNull.HasValue)
+            if (!AllowNull.HasValue)
             {
-                c.Add(t2);
+                Collection.Add(value);
                 result = true;
             }
         }
 
         if (result)
             if (IsComparingByString())
-                sr.Add(ts);
+                StringRepresentations.Add(StringValue);
         return result;
     }
 
     protected abstract bool IsComparingByString();
-    public abstract bool? Contains(T t2);
-    public abstract int AddWithIndex(T t2);
-    public abstract int IndexOf(T path);
+    public abstract bool? Contains(T value);
+    public abstract int AddWithIndex(T value);
+    public abstract int IndexOf(T value);
 
     /// <summary>
     ///     If I want without checkink, use c.AddRange

@@ -1,10 +1,13 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollectionWithoutDuplicates;
 
 public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, IList<T>
 {
-    public static bool br = false;
+    public static bool BreakOnConstruction = false;
     private bool? _allowNull = false;
-    public List<T> c;
+    public List<T> Collection { get; set; }
     private readonly int count = 10000;
 
     private bool resultOfAdd;
@@ -12,29 +15,29 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     /// <summary>
     ///     Dříve vracela Contains() bool? ale musí splňoval IList
     /// </summary>
-    public bool? resultOfBoolN = null;
+    public bool? ResultOfBoolN { get; set; } = null;
 
-    public List<string> sr;
+    public List<string> StringRepresentations { get; set; }
 
-    protected string ts = null;
+    protected string StringValue = null;
 
     private readonly List<T> wasNotAdded = new();
 
     public CollectionWithoutDuplicatesBaseIList()
     {
-        if (br) Debugger.Break();
-        c = new List<T>();
+        if (BreakOnConstruction) Debugger.Break();
+        Collection = new List<T>();
     }
 
     public CollectionWithoutDuplicatesBaseIList(int count)
     {
         this.count = count;
-        c = new List<T>(count);
+        Collection = new List<T>(count);
     }
 
-    public CollectionWithoutDuplicatesBaseIList(IList<T> l)
+    public CollectionWithoutDuplicatesBaseIList(IList<T> list)
     {
-        c = new List<T>(l.ToList());
+        Collection = new List<T>(list.ToList());
     }
 
     /// <summary>
@@ -42,13 +45,13 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     ///     false = !compareWithString
     ///     null = allow null (can't compareWithString)
     /// </summary>
-    public bool? allowNull
+    public bool? AllowNull
     {
         get => _allowNull;
         set
         {
             _allowNull = value;
-            if (value.HasValue && value.Value) sr = new List<string>(count);
+            if (value.HasValue && value.Value) StringRepresentations = new List<string>(count);
         }
     }
 
@@ -58,41 +61,41 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
         //return c.DumpAsString(operation, a);
     }
 
-    public int Count => c.Count;
+    public int Count => Collection.Count;
 
     public bool IsReadOnly => false;
 
     public T this[int index]
     {
-        get => c[index];
-        set => c[index] = value;
+        get => Collection[index];
+        set => Collection[index] = value;
     }
 
-    public void Add(T t2)
+    public void Add(T value)
     {
         resultOfAdd = false;
 
-        var con = ContainsN(t2);
-        if (con.HasValue)
+        var containsResult = ContainsN(value);
+        if (containsResult.HasValue)
         {
-            if (!con.Value)
+            if (!containsResult.Value)
             {
-                c.Add(t2);
+                Collection.Add(value);
                 resultOfAdd = true;
             }
         }
         else
         {
-            if (!allowNull.HasValue)
+            if (!AllowNull.HasValue)
             {
-                c.Add(t2);
+                Collection.Add(value);
                 resultOfAdd = true;
             }
         }
 
         if (resultOfAdd)
             if (IsComparingByString())
-                sr.Add(ts);
+                StringRepresentations.Add(StringValue);
     }
 
     public bool Contains(T item)
@@ -100,48 +103,48 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
         return ContainsN(item).GetValueOrDefault();
     }
 
-    public abstract int IndexOf(T path);
+    public abstract int IndexOf(T value);
 
     public void Insert(int index, T item)
     {
-        c.Insert(index, item);
+        Collection.Insert(index, item);
     }
 
     public void RemoveAt(int index)
     {
-        c.RemoveAt(index);
+        Collection.RemoveAt(index);
     }
 
     public void Clear()
     {
-        c.Clear();
+        Collection.Clear();
     }
 
     public void CopyTo(T[] array, int arrayIndex)
     {
-        c.CopyTo(array, arrayIndex);
+        Collection.CopyTo(array, arrayIndex);
     }
 
     public bool Remove(T item)
     {
-        return c.Remove(item);
+        return Collection.Remove(item);
     }
 
     public IEnumerator<T> GetEnumerator()
     {
-        return c.GetEnumerator();
+        return Collection.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        return c.GetEnumerator();
+        return Collection.GetEnumerator();
     }
 
     protected abstract bool IsComparingByString();
 
-    public abstract bool? ContainsN(T t2);
+    public abstract bool? ContainsN(T value);
 
-    public abstract int AddWithIndex(T t2);
+    public abstract int AddWithIndex(T value);
 
     /// <summary>
     ///     If I want without checkink, use c.AddRange

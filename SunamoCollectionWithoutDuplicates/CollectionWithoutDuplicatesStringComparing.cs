@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollectionWithoutDuplicates;
 
 public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDuplicatesBase<T>
@@ -10,30 +13,30 @@ public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDu
     {
     }
 
-    public CollectionWithoutDuplicatesStringComparing(IList<T> l) : base(l)
+    public CollectionWithoutDuplicatesStringComparing(IList<T> list) : base(list)
     {
     }
 
-    public override int AddWithIndex(T t2)
+    public override int AddWithIndex(T value)
     {
-        if (Contains(t2).GetValueOrDefault())
+        if (Contains(value).GetValueOrDefault())
         {
-            return sr.IndexOf(t2.ToString());
+            return StringRepresentations.IndexOf(value.ToString());
         }
 
-        Add(t2);
-        return c.Count - 1;
+        Add(value);
+        return Collection.Count - 1;
     }
 
-    public override bool? Contains(T t2)
+    public override bool? Contains(T value)
     {
-        ts = t2.ToString();
-        return sr.Contains(ts);
+        StringValue = value.ToString();
+        return StringRepresentations.Contains(StringValue);
     }
 
-    public override int IndexOf(T path)
+    public override int IndexOf(T value)
     {
-        return sr.IndexOf(path.ToString());
+        return StringRepresentations.IndexOf(value.ToString());
     }
 
     protected override bool IsComparingByString()

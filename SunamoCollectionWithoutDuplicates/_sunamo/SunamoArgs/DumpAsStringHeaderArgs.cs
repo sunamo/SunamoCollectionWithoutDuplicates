@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollectionWithoutDuplicates._sunamo.SunamoArgs;
 
 /// <summary>
@@ -11,5 +14,5 @@ internal class DumpAsStringHeaderArgs
     ///     Only names of properties to get
     ///     If starting with ! => surely delete
     /// </summary>
-    internal List<string> onlyNames = new();
+    internal List<string> OnlyNames = new();
 }

@@ -1,7 +1,5 @@
 namespace SunamoCollectionWithoutDuplicates._sunamo.SunamoExceptions;
 
-// © www.sunamo.cz. All Rights Reserved.
-
 /// <summary>
 /// Helper class for building exception messages with additional information.
 /// </summary>

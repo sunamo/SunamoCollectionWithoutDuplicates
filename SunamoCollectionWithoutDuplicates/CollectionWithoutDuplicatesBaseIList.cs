@@ -154,11 +154,11 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     /// <summary>
     /// Determines whether the collection contains the specified item.
     /// </summary>
-    /// <param name="item">The item to check.</param>
+    /// <param name="value">The item to check.</param>
     /// <returns>True if the item exists, false otherwise.</returns>
-    public bool Contains(T item)
+    public bool Contains(T value)
     {
-        return ContainsN(item).GetValueOrDefault();
+        return ContainsN(value).GetValueOrDefault();
     }
 
     /// <summary>
@@ -172,10 +172,10 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     /// Inserts an item at the specified index.
     /// </summary>
     /// <param name="index">The zero-based index at which to insert the item.</param>
-    /// <param name="item">The item to insert.</param>
-    public void Insert(int index, T item)
+    /// <param name="value">The item to insert.</param>
+    public void Insert(int index, T value)
     {
-        Collection.Insert(index, item);
+        Collection.Insert(index, value);
     }
 
     /// <summary>
@@ -208,11 +208,11 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     /// <summary>
     /// Removes the first occurrence of a specific item from the collection.
     /// </summary>
-    /// <param name="item">The item to remove.</param>
+    /// <param name="value">The item to remove.</param>
     /// <returns>True if the item was successfully removed, false otherwise.</returns>
-    public bool Remove(T item)
+    public bool Remove(T value)
     {
-        return Collection.Remove(item);
+        return Collection.Remove(value);
     }
 
     /// <summary>

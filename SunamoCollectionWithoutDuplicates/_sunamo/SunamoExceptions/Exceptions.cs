@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollectionWithoutDuplicates._sunamo.SunamoExceptions;
 
 /// <summary>

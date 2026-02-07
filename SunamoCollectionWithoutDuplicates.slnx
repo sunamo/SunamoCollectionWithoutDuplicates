@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SunamoCollectionWithoutDuplicates.Tests\\SunamoCollectionWithoutDuplicates.Tests.csproj" />
+  <Project Path="RunnerCollectionWithoutDuplicates\\RunnerCollectionWithoutDuplicates.csproj" />
+  <Project Path="SunamoCollectionWithoutDuplicates\SunamoCollectionWithoutDuplicates.csproj" />
+</Solution>

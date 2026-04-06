@@ -9,11 +9,11 @@ internal class DumpAsStringHeaderArgs
     /// <summary>
     /// Gets the default instance of dump-as-string arguments.
     /// </summary>
-    internal static DumpAsStringHeaderArgs Default = new();
+    internal static DumpAsStringHeaderArgs Default { get; } = new();
 
     /// <summary>
     /// Only names of properties to get.
     /// If starting with ! then surely delete.
     /// </summary>
-    internal List<string> OnlyNames = new();
+    internal List<string> OnlyNames { get; set; } = new();
 }

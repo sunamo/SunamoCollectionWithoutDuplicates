@@ -12,12 +12,12 @@ internal sealed partial class Exceptions
     /// <summary>
     /// StringBuilder for building inner additional information for exceptions.
     /// </summary>
-    internal readonly static StringBuilder AdditionalInfoInnerStringBuilder = new();
+    internal static StringBuilder AdditionalInfoInnerStringBuilder { get; } = new();
 
     /// <summary>
     /// StringBuilder for building additional information for exceptions.
     /// </summary>
-    internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
+    internal static StringBuilder AdditionalInfoStringBuilder { get; } = new();
 
     #endregion
 

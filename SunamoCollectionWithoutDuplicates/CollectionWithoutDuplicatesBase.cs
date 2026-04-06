@@ -9,16 +9,16 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     /// <summary>
     /// When true, breaks into debugger on construction. Used for debugging purposes.
     /// </summary>
-    public static bool BreakOnConstruction = false;
+    public static bool BreakOnConstruction { get; set; }
 
-    private bool? _allowNull = false;
+    private bool? allowNull = false;
 
     /// <summary>
     /// Gets or sets the underlying collection of items.
     /// </summary>
     public List<T> Collection { get; set; }
 
-    private readonly int count = 10000;
+    private readonly int initialCapacity = 10000;
 
     /// <summary>
     /// Gets or sets the string representations of items when comparing by string.
@@ -28,9 +28,9 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     /// <summary>
     /// The string value of the current item being processed.
     /// </summary>
-    protected string? StringValue = null;
+    protected string? StringValue { get; set; }
 
-    private readonly List<T> wasNotAdded = new();
+    private readonly List<T> duplicateItems = new();
 
     /// <summary>
     /// Initializes a new instance of the collection without duplicates.
@@ -45,11 +45,11 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     /// <summary>
     /// Initializes a new instance of the collection without duplicates with a specified initial capacity.
     /// </summary>
-    /// <param name="count">The initial capacity of the collection.</param>
-    public CollectionWithoutDuplicatesBase(int count)
+    /// <param name="initialCapacity">The initial capacity of the collection.</param>
+    public CollectionWithoutDuplicatesBase(int initialCapacity)
     {
-        this.count = count;
-        Collection = new List<T>(count);
+        this.initialCapacity = initialCapacity;
+        Collection = new List<T>(initialCapacity);
         StringRepresentations = new List<string>();
     }
 
@@ -71,11 +71,11 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     /// </summary>
     public bool? AllowNull
     {
-        get => _allowNull;
+        get => allowNull;
         set
         {
-            _allowNull = value;
-            if (value.HasValue && value.Value) StringRepresentations = new List<string>(count);
+            allowNull = value;
+            if (value.HasValue && value.Value) StringRepresentations = new List<string>(initialCapacity);
         }
     }
 
@@ -145,11 +145,11 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     /// <returns>A list of items that were not added because they were duplicates.</returns>
     public List<T> AddRange(IList<T> list)
     {
-        wasNotAdded.Clear();
+        duplicateItems.Clear();
         foreach (var item in list)
             if (!Add(item))
-                wasNotAdded.Add(item);
-        return wasNotAdded;
+                duplicateItems.Add(item);
+        return duplicateItems;
     }
 
     /// <summary>

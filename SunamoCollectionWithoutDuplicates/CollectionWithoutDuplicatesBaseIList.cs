@@ -9,7 +9,7 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     /// <summary>
     /// When true, breaks into debugger on construction. Used for debugging purposes.
     /// </summary>
-    public static bool BreakOnConstruction { get; set; }
+    public static bool ShouldBreakOnConstruction { get; set; }
 
     private bool? allowNull = false;
 
@@ -45,7 +45,7 @@ public abstract class CollectionWithoutDuplicatesBaseIList<T> : IDumpAsString, I
     /// </summary>
     public CollectionWithoutDuplicatesBaseIList()
     {
-        if (BreakOnConstruction) Debugger.Break();
+        if (ShouldBreakOnConstruction) Debugger.Break();
         Collection = new List<T>();
         StringRepresentations = new List<string>();
     }

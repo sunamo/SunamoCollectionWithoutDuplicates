@@ -4,12 +4,12 @@ namespace SunamoCollectionWithoutDuplicates;
 /// Base class for collections that automatically prevent duplicate items.
 /// </summary>
 /// <typeparam name="T">The type of items in the collection.</typeparam>
-public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
+public abstract class CollectionWithoutDuplicatesBase<T>
 {
     /// <summary>
     /// When true, breaks into debugger on construction. Used for debugging purposes.
     /// </summary>
-    public static bool BreakOnConstruction { get; set; }
+    public static bool ShouldBreakOnConstruction { get; set; }
 
     private bool? allowNull = false;
 
@@ -37,7 +37,7 @@ public abstract class CollectionWithoutDuplicatesBase<T> //: IDumpAsString
     /// </summary>
     public CollectionWithoutDuplicatesBase()
     {
-        if (BreakOnConstruction) Debugger.Break();
+        if (ShouldBreakOnConstruction) Debugger.Break();
         Collection = new List<T>();
         StringRepresentations = new List<string>();
     }

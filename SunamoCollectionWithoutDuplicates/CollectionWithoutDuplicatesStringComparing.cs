@@ -16,8 +16,8 @@ public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDu
     /// <summary>
     /// Initializes a new instance of the collection with a specified initial capacity.
     /// </summary>
-    /// <param name="count">The initial capacity of the collection.</param>
-    public CollectionWithoutDuplicatesStringComparing(int count) : base(count)
+    /// <param name="initialCapacity">The initial capacity of the collection.</param>
+    public CollectionWithoutDuplicatesStringComparing(int initialCapacity) : base(initialCapacity)
     {
     }
 

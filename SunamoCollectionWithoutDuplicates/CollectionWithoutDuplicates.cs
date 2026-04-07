@@ -17,8 +17,8 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
     /// <summary>
     /// Initializes a new instance of the collection without duplicates with a specified initial capacity.
     /// </summary>
-    /// <param name="count">The initial capacity of the collection.</param>
-    public CollectionWithoutDuplicates(int count) : base(count)
+    /// <param name="initialCapacity">The initial capacity of the collection.</param>
+    public CollectionWithoutDuplicates(int initialCapacity) : base(initialCapacity)
     {
     }
 

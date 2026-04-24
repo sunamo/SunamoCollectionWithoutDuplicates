@@ -40,11 +40,7 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
     {
         if (IsComparingByString())
         {
-            if (Contains(value).GetValueOrDefault())
-            {
-                // Will checkout below
-            }
-            else
+            if (!Contains(value).GetValueOrDefault())
             {
                 Add(value);
                 return Collection.Count - 1;

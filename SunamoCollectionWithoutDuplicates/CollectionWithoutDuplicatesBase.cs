@@ -23,8 +23,6 @@ public abstract class CollectionWithoutDuplicatesBase<T>
     /// <summary>
     /// Gets or sets the string representations of items when comparing by string.
     /// </summary>
-    public List<string> StringRepresentations { get; set; }
-
     /// <summary>
     /// The string value of the current item being processed.
     /// </summary>
@@ -35,6 +33,8 @@ public abstract class CollectionWithoutDuplicatesBase<T>
     /// <summary>
     /// Initializes a new instance of the collection without duplicates.
     /// </summary>
+    public List<string> StringRepresentations { get; set; }
+
     public CollectionWithoutDuplicatesBase()
     {
         if (ShouldBreakOnConstruction) Debugger.Break();

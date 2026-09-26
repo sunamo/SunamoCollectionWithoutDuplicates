@@ -62,17 +62,11 @@ public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDu
     /// </summary>
     /// <param name="value">The item to find.</param>
     /// <returns>The zero-based index of the item.</returns>
-    public override int IndexOf(T value)
-    {
-        return StringRepresentations.IndexOf(value?.ToString()!);
-    }
+    public override int IndexOf(T value) => StringRepresentations.IndexOf(value?.ToString()!);
 
     /// <summary>
     /// Determines whether the collection compares items by their string representation.
     /// </summary>
     /// <returns>Always returns true for this class.</returns>
-    protected override bool IsComparingByString()
-    {
-        return true;
-    }
+    protected override bool IsComparingByString() => true;
 }

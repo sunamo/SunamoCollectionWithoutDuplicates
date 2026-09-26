@@ -45,18 +45,12 @@ public class CollectionWithoutDuplicatesIListT<T> : CollectionWithoutDuplicatesB
     /// </summary>
     /// <param name="value">The item to find.</param>
     /// <returns>The zero-based index of the item, or -1 if the item is not found.</returns>
-    public override int IndexOf(T value)
-    {
-        return Collection.IndexOf(value);
-    }
+    public override int IndexOf(T value) => Collection.IndexOf(value);
 
     /// <summary>
     /// Determines whether this collection compares items by their string representation.
     /// Always returns false because this class uses default equality comparison.
     /// </summary>
     /// <returns>Always returns false.</returns>
-    protected override bool IsComparingByString()
-    {
-        return false;
-    }
+    protected override bool IsComparingByString() => false;
 }

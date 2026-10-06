@@ -1,18 +1,7 @@
 namespace SunamoCollectionWithoutDuplicates;
 
-/// <summary>
-/// A collection that automatically prevents duplicate items and implements IList interface
-/// using default equality comparison for type <typeparamref name="T"/>.
-/// </summary>
-/// <typeparam name="T">The type of items in the collection.</typeparam>
 public class CollectionWithoutDuplicatesIListT<T> : CollectionWithoutDuplicatesBaseIList<T>
 {
-    /// <summary>
-    /// Adds an item to the collection and returns its index.
-    /// If the item already exists, returns the existing index without adding a duplicate.
-    /// </summary>
-    /// <param name="value">The item to add.</param>
-    /// <returns>The zero-based index of the item in the collection.</returns>
     public override int AddWithIndex(T value)
     {
         var index = Collection.IndexOf(value);
@@ -24,11 +13,6 @@ public class CollectionWithoutDuplicatesIListT<T> : CollectionWithoutDuplicatesB
         return index;
     }
 
-    /// <summary>
-    /// Determines whether the collection contains the specified item using default equality comparison.
-    /// </summary>
-    /// <param name="value">The item to check.</param>
-    /// <returns>True if the item exists, false if not, or null if the item is the default value for type <typeparamref name="T"/>.</returns>
     public override bool? ContainsN(T value)
     {
         if (!Collection.Contains(value))

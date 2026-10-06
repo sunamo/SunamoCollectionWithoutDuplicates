@@ -1,5 +1,10 @@
 # SunamoCollectionWithoutDuplicates
 
+## Short description
+
+Kolekce, která automaticky zabraňuje vložení duplicitních položek (automatické Distinct).
+
+
 A .NET collection that automatically prevents duplicate items (automatic Distinct).
 
 ## Overview

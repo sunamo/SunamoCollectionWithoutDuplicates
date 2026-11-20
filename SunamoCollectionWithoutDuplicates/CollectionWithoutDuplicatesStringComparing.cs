@@ -1,19 +1,38 @@
 namespace SunamoCollectionWithoutDuplicates;
 
+/// <summary>
+/// Represents the collection without duplicates string comparing t type.
+/// </summary>
 public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDuplicatesBase<T>
 {
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates string comparing class.
+    /// </summary>
     public CollectionWithoutDuplicatesStringComparing()
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates string comparing class.
+    /// </summary>
+    /// <param name="initialCapacity">The initial capacity.</param>
     public CollectionWithoutDuplicatesStringComparing(int initialCapacity) : base(initialCapacity)
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates string comparing class.
+    /// </summary>
+    /// <param name="list">The list.</param>
     public CollectionWithoutDuplicatesStringComparing(IList<T> list) : base(list)
     {
     }
 
+    /// <summary>
+    /// Add with index.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The add with index result.</returns>
     public override int AddWithIndex(T value)
     {
         if (Contains(value).GetValueOrDefault())
@@ -25,6 +44,11 @@ public class CollectionWithoutDuplicatesStringComparing<T> : CollectionWithoutDu
         return Collection.Count - 1;
     }
 
+    /// <summary>
+    /// Contains.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The contains result.</returns>
     public override bool? Contains(T value)
     {
         StringValue = value?.ToString();

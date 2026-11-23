@@ -1,19 +1,38 @@
 namespace SunamoCollectionWithoutDuplicates;
 
+/// <summary>
+/// Represents the collection without duplicates t type.
+/// </summary>
 public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
 {
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates class.
+    /// </summary>
     public CollectionWithoutDuplicates()
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates class.
+    /// </summary>
+    /// <param name="initialCapacity">The initial capacity.</param>
     public CollectionWithoutDuplicates(int initialCapacity) : base(initialCapacity)
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance of the collection without duplicates class.
+    /// </summary>
+    /// <param name="list">The list.</param>
     public CollectionWithoutDuplicates(IList<T> list) : base(list)
     {
     }
 
+    /// <summary>
+    /// Add with index.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The add with index result.</returns>
     public override int AddWithIndex(T value)
     {
         if (IsComparingByString())
@@ -35,6 +54,11 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
         return index;
     }
 
+    /// <summary>
+    /// Contains.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The contains result.</returns>
     public override bool? Contains(T value)
     {
         if (IsComparingByString())
@@ -52,6 +76,11 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
         return true;
     }
 
+    /// <summary>
+    /// Index of.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The index of result.</returns>
     public override int IndexOf(T value)
     {
         if (IsComparingByString()) return StringRepresentations.IndexOf(value?.ToString()!);
@@ -65,6 +94,10 @@ public class CollectionWithoutDuplicates<T> : CollectionWithoutDuplicatesBase<T>
         return index;
     }
 
+    /// <summary>
+    /// Is comparing by string.
+    /// </summary>
+    /// <returns>The is comparing by string result.</returns>
     protected override bool IsComparingByString()
     {
         return AllowNull.HasValue && AllowNull.Value;
